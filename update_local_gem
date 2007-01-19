@@ -1,0 +1,6 @@
+#!/bin/sh
+# Refresh the local gem for testing purposes.
+rake
+cd pkg/
+gem uninstall rubypodder --executables
+gem install rubypodder --local
