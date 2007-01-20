@@ -35,7 +35,7 @@ class RubyPodder
     expanded_path = File.expand_path(@conf_file)
     return if File.exists?(expanded_path)
     make_dirname(expanded_path)
-    rio(expanded_path) < "http://downloads.bbc.co.uk/rmhttp/downloadtrial/radio4/thenowshow/rss.xml"
+    rio(expanded_path) < "http://downloads.bbc.co.uk/rmhttp/downloadtrial/radio4/thenowshow/rss.xml\n"
   end
 
   def make_dirname(full_filename)

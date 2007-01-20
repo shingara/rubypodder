@@ -3,25 +3,19 @@
 This package contains rubypodder, a simple podcast receiver
 inspired by bashpodder (http://linc.homeunix.org:8080/scripts/bashpodder/).
 
-== Download
-
-The latest version of rubypodder can be found at
+== Homepage
 
    http://rubyforge.org/projects/rubypodder/
 
 == Installation
 
-Place the rubypodder gem in your local repository and install with
-the following:
-
+rubypodder can be downloaded and installed with:
    gem install rubypodder
 
 == Quick Start
 
 Type
-
    rubypodder
-
 When it finishes, you should see a ~/.rubypodder directory.
 This should contain an example rp.conf configuration file with a feed in
 it to get you started. If there were any podcasts to download in the feed
@@ -31,35 +25,32 @@ You can see what happened by looking in rp.log.
 == Running the rubypodder Test Suite
 
 If you wish to run the unit tests that come with rubypodder:
-
    gem check rubypodder --test
-
 A message will be given if any of the tests fail.
 
 === Uninstallation
 
 To uninstall the rubypodder gem use:
-
    gem uninstall rubypodder
 
 == Configuration
 
-Create a file +~/.rubypodder/rp.conf+ containing podcast feeds, one per line.
+Create a file 
+   ~/.rubypodder/rp.conf
+containing podcast feeds, one per line.
 
 == Usage
 
 Type
-
    rubypodder
 
 and if there are any podcast episodes from your feeds that have not yet
 been downloaded, they will be downloaded into a "date" directory such as
-+~/.rubypodder/2007-01-18/+
+   ~/.rubypodder/2007-01-18/
 
 A good idea is to use +crontab -e+ and add a line like
-+0 5 * * * rubypodder+
-which will set up a cron job which will do
-this regularly.
+   0 5 * * * rubypodder
+which will set up a cron job which will do this regularly.
 
 == License
 
