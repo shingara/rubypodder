@@ -54,7 +54,8 @@ class RubyPodder
   end
 
   def read_feeds
-    IO.readlines(@conf_file).each {|l| l.chomp!}
+    #IO.readlines(@conf_file).each {|l| l.chomp!}
+    a = rio(@conf_file).chomp.readlines.reject {|i| i =~ /^#/}
   end
 
   def parse_rss(rss_source)
