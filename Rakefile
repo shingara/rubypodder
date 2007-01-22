@@ -4,7 +4,7 @@ require 'rake/gempackagetask'
 spec = Gem::Specification.new do |s|
     s.platform  =   Gem::Platform::RUBY
     s.name      =   "rubypodder"
-    s.version   =   "0.1.0"
+    s.version   =   "0.1.1"
     s.author    =   "Lex Miller"
     s.email     =   "lex.miller @nospam@ gmail.com"
     s.summary   =   "A podcast aggregator without an interface"
