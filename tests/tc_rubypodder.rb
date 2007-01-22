@@ -8,8 +8,10 @@ class TC_RubyPodder < Test::Unit::TestCase
     system("rm -rf " + "/tmp/test_rp.conf")
     system("rm -rf " + "/tmp/test_rp.done")
     File.open("/tmp/test_rp.conf", "w") do |file|
+      file.write("# This is just a comment\n")
       file.write("http://downloads.bbc.co.uk/rmhttp/downloadtrial/radio4/thenowshow/rss.xml\n")
-      file.write("http://www.guardian.co.uk/podcasts/comedy/rickygervais/mp3.xml")
+      file.write("# This is just another comment\n")
+      file.write("http://www.guardian.co.uk/podcasts/comedy/rickygervais/mp3.xml\n")
     end
     @subdir = "/tmp/subdir"
     system("rm -rf " + @subdir)
@@ -90,6 +92,7 @@ class TC_RubyPodder < Test::Unit::TestCase
     assert_kind_of(Array, feed_list)
     assert_equal(2, feed_list.length)
     assert_equal("http://downloads.bbc.co.uk/rmhttp/downloadtrial/radio4/thenowshow/rss.xml", feed_list[0])
+    assert_equal("http://www.guardian.co.uk/podcasts/comedy/rickygervais/mp3.xml", feed_list[1])
   end
 
   def test_parse_rss
