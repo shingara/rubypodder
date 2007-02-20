@@ -1,2 +1,7 @@
+$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'rubypodder'
+require 'optparse'
+opts = OptionParser.new
+opts.on("-v", "--version") { puts RubyPodder::Version; exit }
+opts.parse(*ARGV)
 RubyPodder.new.run

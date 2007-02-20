@@ -17,6 +17,8 @@ end
 
 class RubyPodder
 
+  Version = 'rubypodder v0.1.1'
+
   attr_reader :conf_file, :log_file, :done_file, :date_dir
 
   def initialize(file_base="~/.rubypodder/rp")
