@@ -96,7 +96,7 @@ class RubyPodder
   end
 
   def run
-    @log.info("Starting")
+    @log.info("Starting (#{Version})")
     read_feeds.each do |url|
       http_body = rio(url).contents
       rss = parse_rss(http_body)

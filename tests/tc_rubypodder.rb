@@ -199,4 +199,13 @@ class TC_RubyPodder < Test::Unit::TestCase
     assert(File.exists?(@subdir))
   end
 
+  def test_log_contains_version
+    File.open("/tmp/test_rp.conf", "w") { |file| file.write("# Empty config file\n") }
+    @rp = RubyPodder.new("/tmp/test_rp")
+    @rp.run
+    File.open( @rp.log_file ) do |f|
+      assert(f.any? { |line| line =~ /Starting.+#{RubyPodder::Version}/ }, "'Starting' log entry should contain '#{RubyPodder::Version}'")
+    end
+  end
+
 end
