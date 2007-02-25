@@ -32,6 +32,7 @@ end
 class TC_stdout < Test::Unit::TestCase
   def setup
     ENV['HOME'] = "/tmp"
+    @bindir = File.join(File.dirname(__FILE__), "..", "bin")
   end
 
   def teardown
@@ -39,7 +40,13 @@ class TC_stdout < Test::Unit::TestCase
   end
 
   def test_version
-    assert_equal "rubypodder v0.1.1\n", wrap { puts `ruby ../bin/rubypodder --version` }
-    assert exits_without_doing_anything { `ruby ../bin/rubypodder --version` }, "Doesn't exit immediately"
+    assert_equal "rubypodder v0.1.2\n", wrap { puts `ruby #{@bindir}/rubypodder --version` }
+    assert exits_without_doing_anything { `ruby #{@bindir}/rubypodder --version` }, "--version doesn't exit immediately"
   end
+
+  def test_help
+    assert_match %r{See http://rubypodder.rubyforge.org/}, wrap { puts `ruby #{@bindir}/rubypodder --help` }
+    assert exits_without_doing_anything { `ruby #{@bindir}/rubypodder --help` }, "--help doesn't exit immediately"
+  end
+
 end

@@ -3,5 +3,6 @@ require 'rubypodder'
 require 'optparse'
 opts = OptionParser.new
 opts.on("-v", "--version") { puts RubyPodder::Version; exit }
+opts.on("-h", "--help")    { puts opts.to_s + "See http://rubypodder.rubyforge.org/\n"; exit }
 opts.parse(*ARGV)
 RubyPodder.new.run
