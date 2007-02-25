@@ -189,6 +189,13 @@ class TC_RubyPodder < Test::Unit::TestCase
     assert(!File.exists?(dest_file))
   end
 
+  def test_download_error_is_logged
+    @rp.download("http://very.very.broken.url/oh/no/oh/dear.xml")
+    File.open( @rp.log_file ) do |f|
+      assert(f.any? { |line| line =~ /ERROR/ }, "Error in download should be logged")
+    end
+  end
+
   def test_remove_dir_if_empty
     system("mkdir -p " + @subdir)
     @rp.remove_dir_if_empty(@subdir)
@@ -208,12 +215,12 @@ class TC_RubyPodder < Test::Unit::TestCase
     end
   end
 
-  def test_log_contains_download_error
+  def test_log_contains_error_for_unreadable_feed_url
     File.open("/tmp/test_rp.conf", "w") { |file| file.write("http://very.very.broken.url/oh/no/oh/dear.xml\n") }
     @rp = RubyPodder.new("/tmp/test_rp")
     @rp.run
     File.open( @rp.log_file ) do |f|
-      assert(f.any? { |line| line =~ /ERROR/ }, "Error in download should be logged")
+      assert(f.any? { |line| line =~ /ERROR/ }, "Error in feed url should be logged")
     end
   end
 

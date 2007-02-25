@@ -80,9 +80,13 @@ class RubyPodder
   def download(url)
     return if already_downloaded(url)
     @log.info("  Downloading: #{url}")
-    file_name = dest_file_name(url)
-    rio(file_name) < rio(url)
-    record_download(url)
+    begin
+      file_name = dest_file_name(url)
+      rio(file_name) < rio(url)
+      record_download(url)
+    rescue
+      @log.error("    Failed to download #{url}")
+    end
   end
 
   def remove_dir_if_empty(dirname)
