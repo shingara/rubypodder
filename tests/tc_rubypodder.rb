@@ -208,4 +208,13 @@ class TC_RubyPodder < Test::Unit::TestCase
     end
   end
 
+  def test_log_contains_download_error
+    File.open("/tmp/test_rp.conf", "w") { |file| file.write("http://very.very.broken.url/oh/no/oh/dear.xml\n") }
+    @rp = RubyPodder.new("/tmp/test_rp")
+    @rp.run
+    File.open( @rp.log_file ) do |f|
+      assert(f.any? { |line| line =~ /ERROR/ }, "Error in download should be logged")
+    end
+  end
+
 end

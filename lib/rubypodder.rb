@@ -98,7 +98,12 @@ class RubyPodder
   def run
     @log.info("Starting (#{Version})")
     read_feeds.each do |url|
-      http_body = rio(url).contents
+      begin
+        http_body = rio(url).contents
+      rescue
+        @log.error("  Can't read from #{url}")
+        next
+      end
       rss = parse_rss(http_body)
       @log.info("Channel: #{rss.channel.title}")
       rss.items.each do |item|
