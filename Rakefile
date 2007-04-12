@@ -15,6 +15,7 @@ spec = Gem::Specification.new do |s|
     s.default_executable = "rubypodder"
     s.autorequire        = "rubypodder"
     s.add_dependency("rio")
+    s.add_dependency("rake")
     s.test_files         = Dir.glob('tests/*.rb')
     s.has_rdoc           = true
     s.extra_rdoc_files   = ["README", "MIT-LICENSE"]
@@ -24,4 +25,7 @@ Rake::GemPackageTask.new(spec) do |pkg|
 end
 task :default => "pkg/#{spec.name}-#{spec.version}.gem" do
     puts "generated latest version"
+end
+task :test do
+    ruby "tests/ts_rubypodder.rb"
 end
