@@ -31,19 +31,3 @@ I, [2007-04-13T03:10:21.216048 #4825]  INFO -- : Channel: The Now Show
 I, [2007-04-13T03:10:22.529647 #4825]  INFO -- : Channel: Broadcasting House
 I, [2007-04-13T03:10:23.841444 #4825]  INFO -- : Channel: Radio 4 Choice
 
-- Make rubypodder more portable, see http://firebrigade.seattlerb.org/gem/show/rubypodder:
-### installing rubypodder-0.1.2 + dependencies
-### rubypodder-0.1.2
-### rio-0.3.9
-### testing rubypodder-0.1.2
-!!! HAS Rakefile, DOES NOT DEPEND ON RAKE!  NEEDS s.add_dependency 'rake'
-### rake installed, even though you claim not to need it
-### /opt/csw/bin/ruby -S rake test
-/opt/csw/bin/rake:17:Warning: require_gem is obsolete.  Use gem instead.
-rake aborted!
-Don't know how to build task 'test'
-
-(See full trace by running task with --trace)
-(in /export/home/aaron/tinderbox/sandbox/gems/rubypodder-0.1.2)
-!!! No output indicating success found
-!!! could not figure out how to test rubypodder-0.1.2
