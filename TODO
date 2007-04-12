@@ -1,0 +1,49 @@
+- Fix timeout exception
+
+Got this:
+
+[lex@localhost 200704]$ rubypodder
+/usr/lib/ruby/1.8/timeout.rb:54:in `rbuf_fill': execution expired (Timeout::Error)
+        from /usr/lib/ruby/1.8/timeout.rb:56:in `timeout'
+        from /usr/lib/ruby/1.8/timeout.rb:76:in `timeout'
+        from /usr/lib/ruby/1.8/net/protocol.rb:132:in `rbuf_fill'
+        from /usr/lib/ruby/1.8/net/protocol.rb:86:in `read'
+        from /usr/lib/ruby/1.8/net/http.rb:2229:in `read_chunked'
+        from /usr/lib/ruby/1.8/net/http.rb:2204:in `read_body_0'
+        from /usr/lib/ruby/1.8/net/http.rb:2170:in `read_body'
+        from /usr/lib/ruby/1.8/open-uri.rb:267:in `open_http'
+         ... 22 levels...
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/lib/rubypodder.rb:104:in `run'
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/bin/rubypodder:8
+        from /usr/bin/rubypodder:18:in `load'
+        from /usr/bin/rubypodder:18
+[lex@localhost 200704]$
+
+Log looked like this:
+
+I, [2007-04-13T03:09:22.102506 #4825]  INFO -- : Starting (rubypodder v0.1.2)
+I, [2007-04-13T03:09:24.549869 #4825]  INFO -- : Channel: Radio 1's Music Interviews
+I, [2007-04-13T03:09:25.892094 #4825]  INFO -- : Channel: In Our Time
+I, [2007-04-13T03:09:25.894478 #4825]  INFO -- :   Downloading: http://downloads.bbc.co.uk/rmhttp/downloadtrial/radio4/inourtime/inourtime_20070412-0900_40_pc.mp3
+I, [2007-04-13T03:10:19.085128 #4825]  INFO -- : Channel: Documentary Archive
+I, [2007-04-13T03:10:20.233560 #4825]  INFO -- : Channel: Talking 6 Music
+I, [2007-04-13T03:10:21.216048 #4825]  INFO -- : Channel: The Now Show
+I, [2007-04-13T03:10:22.529647 #4825]  INFO -- : Channel: Broadcasting House
+I, [2007-04-13T03:10:23.841444 #4825]  INFO -- : Channel: Radio 4 Choice
+
+- Make rubypodder more portable, see http://firebrigade.seattlerb.org/gem/show/rubypodder:
+### installing rubypodder-0.1.2 + dependencies
+### rubypodder-0.1.2
+### rio-0.3.9
+### testing rubypodder-0.1.2
+!!! HAS Rakefile, DOES NOT DEPEND ON RAKE!  NEEDS s.add_dependency 'rake'
+### rake installed, even though you claim not to need it
+### /opt/csw/bin/ruby -S rake test
+/opt/csw/bin/rake:17:Warning: require_gem is obsolete.  Use gem instead.
+rake aborted!
+Don't know how to build task 'test'
+
+(See full trace by running task with --trace)
+(in /export/home/aaron/tinderbox/sandbox/gems/rubypodder-0.1.2)
+!!! No output indicating success found
+!!! could not figure out how to test rubypodder-0.1.2
