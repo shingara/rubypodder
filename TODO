@@ -31,3 +31,40 @@ I, [2007-04-13T03:10:21.216048 #4825]  INFO -- : Channel: The Now Show
 I, [2007-04-13T03:10:22.529647 #4825]  INFO -- : Channel: Broadcasting House
 I, [2007-04-13T03:10:23.841444 #4825]  INFO -- : Channel: Radio 4 Choice
 
+Check rio 0.4.0 release notes. Just upgraded to this, might it fix the problem?
+
+
+- Catch parse exception:
+
+[lex@localhost ~]$ rubypodder
+/usr/lib/ruby/1.8/rss/rexmlparser.rb:24:in `_parse': This is not well formed XML (RSS::NotWellFormedError)
+Missing end tag for 'td' (got "tr")
+Line:
+Position:
+Last 80 unconsumed characters:
+ </table>  <!-- CONTENT_AREA_BEGIN -->  <table width="760" border="0" cellspacing       from /usr/lib/ruby/1.8/rss/parser.rb:163:in `parse'
+        from /usr/lib/ruby/1.8/rss/parser.rb:78:in `parse'
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/lib/rubypodder.rb:64:in `parse_rss'
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/lib/rubypodder.rb:111:in `run'
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/lib/rubypodder.rb:104:in `each'
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/lib/rubypodder.rb:104:in `run'
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/bin/rubypodder:8
+        from /usr/bin/rubypodder:18:in `load'
+        from /usr/bin/rubypodder:18
+[lex@localhost ~]$
+
+Log:
+
+I, [2007-04-15T07:26:13.289914 #4903]  INFO -- : Starting (rubypodder v0.1.2)
+I, [2007-04-15T07:26:16.064287 #4903]  INFO -- : Channel: Radio 1's Music Interviews
+I, [2007-04-15T07:26:17.392875 #4903]  INFO -- : Channel: In Our Time
+I, [2007-04-15T07:26:19.147600 #4903]  INFO -- : Channel: Documentary Archive
+I, [2007-04-15T07:26:20.202464 #4903]  INFO -- : Channel: Talking 6 Music
+I, [2007-04-15T07:26:21.205301 #4903]  INFO -- : Channel: The Now Show
+I, [2007-04-15T07:26:22.503016 #4903]  INFO -- : Channel: Broadcasting House
+I, [2007-04-15T07:26:23.797349 #4903]  INFO -- : Channel: Radio 4 Choice
+I, [2007-04-15T07:26:25.767457 #4903]  INFO -- : Channel: Ruby on Rails Podcast
+I, [2007-04-15T07:26:27.165947 #4903]  INFO -- : Channel: Radio 1's Entertainment News
+I, [2007-04-15T07:26:29.380879 #4903]  INFO -- : Channel: The Ricky Gervais Show
+[lex@localhost ~]$
+
