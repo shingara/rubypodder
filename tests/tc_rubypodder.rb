@@ -224,4 +224,12 @@ class TC_RubyPodder < Test::Unit::TestCase
     end
   end
 
+#  def test_log_contains_error_for_unparsable_rss_source
+#    #override rio.contents to return broken rss source
+#    @rp.run
+#    File.open( @rp.log_file ) do |f|
+#      assert(f.any? { |line| line =~ /ERROR/ }, "Parse error in rss source should be logged")
+#    end
+#  end
+
 end

@@ -32,6 +32,42 @@ I, [2007-04-13T03:10:22.529647 #4825]  INFO -- : Channel: Broadcasting House
 I, [2007-04-13T03:10:23.841444 #4825]  INFO -- : Channel: Radio 4 Choice
 
 Check rio 0.4.0 release notes. Just upgraded to this, might it fix the problem?
+No - Still got the problem after the upgrade:
+
+[lex@localhost ~]$ rubypodder
+/usr/lib/ruby/1.8/timeout.rb:54:in `rbuf_fill': execution expired (Timeout::Error)
+        from /usr/lib/ruby/1.8/timeout.rb:56:in `timeout'
+        from /usr/lib/ruby/1.8/timeout.rb:76:in `timeout'
+        from /usr/lib/ruby/1.8/net/protocol.rb:132:in `rbuf_fill'
+        from /usr/lib/ruby/1.8/net/protocol.rb:116:in `readuntil'
+        from /usr/lib/ruby/1.8/net/protocol.rb:126:in `readline'
+        from /usr/lib/ruby/1.8/net/http.rb:2017:in `read_status_line'
+        from /usr/lib/ruby/1.8/net/http.rb:2006:in `read_new'
+        from /usr/lib/ruby/1.8/net/http.rb:1047:in `request'
+         ... 40 levels...
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/lib/rubypodder.rb:104:in `run'
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.2/bin/rubypodder:8
+        from /usr/bin/rubypodder:18:in `load'
+        from /usr/bin/rubypodder:18
+[lex@localhost ~]$
+
+
+I, [2007-04-18T17:18:13.574268 #5145]  INFO -- : Starting (rubypodder v0.1.2)
+I, [2007-04-18T17:18:18.821550 #5145]  INFO -- : Channel: Radio 1's Music Interviews
+I, [2007-04-18T17:18:19.388080 #5145]  INFO -- : Channel: In Our Time
+I, [2007-04-18T17:18:19.802192 #5145]  INFO -- : Channel: Documentary Archive
+I, [2007-04-18T17:18:19.804802 #5145]  INFO -- :   Downloading: http://downloads.bbc.co.uk/rmhttp/downloadtrial/worldservice/documentaryarchive/documentaryarchive_20070416-1100_40_pc.mp3
+I, [2007-04-18T17:21:11.500562 #5145]  INFO -- : Channel: Talking 6 Music
+I, [2007-04-18T17:21:11.689359 #5145]  INFO -- : Channel: The Now Show
+I, [2007-04-18T17:21:12.166108 #5145]  INFO -- : Channel: Broadcasting House
+I, [2007-04-18T17:21:12.658380 #5145]  INFO -- : Channel: Radio 4 Choice
+I, [2007-04-18T17:21:14.564521 #5145]  INFO -- : Channel: Ruby on Rails Podcast
+I, [2007-04-18T17:21:15.133214 #5145]  INFO -- : Channel: Radio 1's Entertainment News
+I, [2007-04-18T17:21:16.246654 #5145]  INFO -- : Channel: The Ricky Gervais Show
+I, [2007-04-18T17:21:28.619153 #5145]  INFO -- : Channel: IBM developerWorks podcasts
+I, [2007-04-18T17:21:28.620803 #5145]  INFO -- :   Downloading: http://www.ibm.com/developerworks/podcast/twodw/twodw041707.mp3
+I, [2007-04-18T17:22:37.595564 #5145]  INFO -- :   Downloading: http://www.ibm.com/developerworks/blogs/page/scotttwodw/twodw031307.mp3
+
 
 
 - Catch parse exception:
