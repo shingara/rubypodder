@@ -108,7 +108,12 @@ class RubyPodder
         @log.error("  Can't read from #{url}")
         next
       end
-      rss = parse_rss(http_body)
+      begin
+        rss = parse_rss(http_body)
+      rescue
+	@log.error("  Can't parse this feed")
+	next
+      end
       @log.info("Channel: #{rss.channel.title}")
       rss.items.each do |item|
         download(item.enclosure.url)

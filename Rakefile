@@ -4,7 +4,7 @@ require 'rake/gempackagetask'
 spec = Gem::Specification.new do |s|
     s.platform  =   Gem::Platform::RUBY
     s.name      =   "rubypodder"
-    s.version   =   "0.1.2"
+    s.version   =   "0.1.3"
     s.author    =   "Lex Miller"
     s.email     =   "lex.miller @nospam@ gmail.com"
     s.summary   =   "A podcast aggregator without an interface"
@@ -16,6 +16,7 @@ spec = Gem::Specification.new do |s|
     s.autorequire        = "rubypodder"
     s.add_dependency("rio")
     s.add_dependency("rake")
+    s.add_dependency("mocha")
     s.test_files         = Dir.glob('tests/*.rb')
     s.has_rdoc           = true
     s.extra_rdoc_files   = ["README", "MIT-LICENSE"]

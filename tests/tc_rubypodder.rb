@@ -1,6 +1,7 @@
 $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'test/unit'
 require 'rubypodder'
+require 'mocha'
 
 class TC_RubyPodder < Test::Unit::TestCase
 
@@ -224,12 +225,12 @@ class TC_RubyPodder < Test::Unit::TestCase
     end
   end
 
-#  def test_log_contains_error_for_unparsable_rss_source
-#    #override rio.contents to return broken rss source
-#    @rp.run
-#    File.open( @rp.log_file ) do |f|
-#      assert(f.any? { |line| line =~ /ERROR/ }, "Parse error in rss source should be logged")
-#    end
-#  end
+  def test_log_contains_error_for_unparsable_rss_source
+    @rp.stubs(:parse_rss).raises(RSS::NotWellFormedError, 'This is not well formed XML')
+    @rp.run
+    File.open( @rp.log_file ) do |f|
+      assert(f.any? { |line| line =~ /ERROR/ }, "Parse error in rss source should be logged")
+    end
+  end
 
 end
