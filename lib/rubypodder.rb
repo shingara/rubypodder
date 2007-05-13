@@ -17,7 +17,7 @@ end
 
 class RubyPodder
 
-  Version = 'rubypodder v0.1.2'
+  Version = 'rubypodder v0.1.3'
 
   attr_reader :conf_file, :log_file, :done_file, :date_dir
 
