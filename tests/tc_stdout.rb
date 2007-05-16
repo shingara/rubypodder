@@ -40,7 +40,7 @@ class TC_stdout < Test::Unit::TestCase
   end
 
   def test_version
-    assert_equal "rubypodder v0.1.3\n", wrap { puts `ruby #{@bindir}/rubypodder --version` }
+    assert_equal "rubypodder v0.1.4\n", wrap { puts `ruby #{@bindir}/rubypodder --version` }
     assert exits_without_doing_anything { `ruby #{@bindir}/rubypodder --version` }, "--version doesn't exit immediately"
   end
 

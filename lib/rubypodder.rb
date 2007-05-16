@@ -17,7 +17,7 @@ end
 
 class RubyPodder
 
-  Version = 'rubypodder v0.1.3'
+  Version = 'rubypodder v0.1.4'
 
   attr_reader :conf_file, :log_file, :done_file, :date_dir
 
@@ -83,9 +83,10 @@ class RubyPodder
     begin
       file_name = dest_file_name(url)
       rio(file_name) < rio(url)
-      record_download(url)
     rescue
       @log.error("  Failed to download #{url}")
+    else
+      record_download(url)
     end
   end
 
