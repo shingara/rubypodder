@@ -69,3 +69,7 @@ I, [2007-04-18T17:21:28.620803 #5145]  INFO -- :   Downloading: http://www.ibm.c
 I, [2007-04-18T17:22:37.595564 #5145]  INFO -- :   Downloading: http://www.ibm.com/developerworks/blogs/page/scotttwodw/twodw031307.mp3
 
 - Stub test code so that tests can be run off-line.
+  Can possibly do this by catching a certain type of exception in the test code rather than
+  stubbing (which is tricky with rio as it deals with files as well as networking)
+
+- record_download should happen in an else (to the rescue) clause.
