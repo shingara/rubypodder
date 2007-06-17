@@ -67,3 +67,8 @@ I, [2007-04-18T17:21:16.246654 #5145]  INFO -- : Channel: The Ricky Gervais Show
 I, [2007-04-18T17:21:28.619153 #5145]  INFO -- : Channel: IBM developerWorks podcasts
 I, [2007-04-18T17:21:28.620803 #5145]  INFO -- :   Downloading: http://www.ibm.com/developerworks/podcast/twodw/twodw041707.mp3
 I, [2007-04-18T17:22:37.595564 #5145]  INFO -- :   Downloading: http://www.ibm.com/developerworks/blogs/page/scotttwodw/twodw031307.mp3
+
+- Implement a nice way of subscribing to a new feed any only downloading
+  the latest programme. e.g. Provide a -n option which just shows what
+  _would_ be downloaded, allowing the user to add some of the older programmes
+  to the rp.done file, then do the actual download.
