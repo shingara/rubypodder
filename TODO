@@ -51,6 +51,42 @@ No - Still got the problem after the upgrade:
         from /usr/bin/rubypodder:18
 [lex@localhost ~]$
 
+08/08/2007: Got the problem again:
+
+[lex@localhost mp3]$ rubypodder
+/usr/lib/ruby/1.8/timeout.rb:54:in `rbuf_fill': execution expired (Timeout::Error)
+        from /usr/lib/ruby/1.8/timeout.rb:56:in `timeout'
+        from /usr/lib/ruby/1.8/timeout.rb:76:in `timeout'
+        from /usr/lib/ruby/1.8/net/protocol.rb:132:in `rbuf_fill'
+        from /usr/lib/ruby/1.8/net/protocol.rb:86:in `read'
+        from /usr/lib/ruby/1.8/net/http.rb:2209:in `read_body_0'
+        from /usr/lib/ruby/1.8/net/http.rb:2170:in `read_body'
+        from /usr/lib/ruby/1.8/open-uri.rb:267:in `open_http'
+        from /usr/lib/ruby/1.8/net/http.rb:1050:in `request'
+         ... 42 levels...
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.4/lib/rubypodder.rb:105:in `run'
+        from /usr/lib/ruby/gems/1.8/gems/rubypodder-0.1.4/bin/rubypodder:8
+        from /usr/bin/rubypodder:18:in `load'
+        from /usr/bin/rubypodder:18
+[lex@localhost mp3]$
+
+I, [2007-08-08T16:21:12.688432 #7226]  INFO -- : Starting (rubypodder v0.1.4)
+I, [2007-08-08T16:21:15.273011 #7226]  INFO -- : Channel: In Our Time
+I, [2007-08-08T16:21:17.430363 #7226]  INFO -- : Channel: Documentary Archive
+I, [2007-08-08T16:21:17.698751 #7226]  INFO -- :   Downloading: http://downloads.bbc.co.uk/podcasts/worldservice/docarchive/docarchive_20070806-1000.mp3
+I, [2007-08-08T16:27:49.746461 #7226]  INFO -- : Channel: Talking 6 Music
+I, [2007-08-08T16:27:51.035321 #7226]  INFO -- : Channel: The Now Show
+I, [2007-08-08T16:27:53.641529 #7226]  INFO -- : Channel: Broadcasting House
+I, [2007-08-08T16:27:55.198963 #7226]  INFO -- : Channel: Radio 4 Choice
+I, [2007-08-08T16:27:56.840154 #7226]  INFO -- : Channel: Ruby on Rails Podcast
+I, [2007-08-08T16:27:59.159623 #7226]  INFO -- : Channel: Radio 1 Entertainment News
+I, [2007-08-08T16:28:01.942770 #7226]  INFO -- : Channel: The Ricky Gervais Show
+I, [2007-08-08T16:28:05.306575 #7226]  INFO -- : Channel: IBM developerWorks podcasts
+I, [2007-08-08T16:28:05.308821 #7226]  INFO -- :   Downloading: http://www.ibm.com/developerworks/podcast/twodw/twodw080707.mp3
+I, [2007-08-08T16:28:42.204062 #7226]  INFO -- :   Downloading: http://www.ibm.com/developerworks/podcast/dwi/cm-int080707.mp3
+[lex@localhost ~]$
+
+
 
 I, [2007-04-18T17:18:13.574268 #5145]  INFO -- : Starting (rubypodder v0.1.2)
 I, [2007-04-18T17:18:18.821550 #5145]  INFO -- : Channel: Radio 1's Music Interviews
