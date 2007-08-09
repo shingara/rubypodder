@@ -21,16 +21,24 @@ mp3 player.<br>
 
 <h4>Download and Installation</h4>
 
-Note:&nbsp;ruby and rubygems must be installed on your computer. On
-my Mandriva desktop, this would be:<br>
+ruby and rubygems must be installed on your computer. On
+Mandriva, this would be:<br>
 
 <pre># urpmi ruby rubygems rdoc</pre>
 
+On Ubuntu it would be:<br>
+
+<pre>$ sudo apt-get install ruby rubygems rdoc</pre>
+
 Download and install rubypodder:<br>
 
-<pre># gem install rubypodder</pre>
+<pre># gem install --include-dependencies rubypodder</pre>
 
 <h4>Running rubypodder</h4>
+
+Make sure that Ruby gems are in your $PATH. You can do this by adding the following line to your ~/.bashrc file:<br>
+
+<pre>export PATH=$PATH:/var/lib/gems/1.8/bin</pre>
 
 Run rubypodder from the command line like this:<br>
 
@@ -41,7 +49,7 @@ example podcast (the BBC comedy programme "The Now Show"). If there
 were any episodes of this available you should see them in the
 directory:<br>
 
-<pre>~/.rubypodder/2007-01-27/</pre>
+<pre>~/.rubypodder/2007-08-09/</pre>
 
 or whatever the date is when you run it. If there are no recent
 episodes, you won't see the date directory but you should see:<br>
