@@ -1,6 +1,6 @@
 #!/bin/sh
 # Refresh the local gem for testing purposes.
-rake
+/var/lib/gems/1.8/bin/rake
 cd pkg/
 gem uninstall rubypodder --executables
 gem install rubypodder --local

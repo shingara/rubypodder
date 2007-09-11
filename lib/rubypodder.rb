@@ -17,7 +17,7 @@ end
 
 class RubyPodder
 
-  Version = 'rubypodder v0.1.4'
+  Version = 'rubypodder v1.0.0'
 
   attr_reader :conf_file, :log_file, :done_file, :date_dir
 
@@ -90,6 +90,16 @@ class RubyPodder
     end
   end
 
+  def download_all(items)
+    items.each do |item|
+      begin
+        download(item.enclosure.url)
+      rescue
+        @log.warn("  No media to download for this item")
+      end
+    end
+  end
+
   def remove_dir_if_empty(dirname)
     begin
       Dir.rmdir(dirname)
@@ -116,9 +126,7 @@ class RubyPodder
 	next
       end
       @log.info("Channel: #{rss.channel.title}")
-      rss.items.each do |item|
-        download(item.enclosure.url)
-      end
+      download_all(rss.items)
     end
     remove_dir_if_empty(@date_dir)
     @log.info("Finished")

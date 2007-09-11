@@ -150,6 +150,26 @@ class TC_RubyPodder < Test::Unit::TestCase
     assert_equal("http://podcast.rickygervais.com/guspecials_halloween.mp3", rss.items[0].enclosure.url)
   end
 
+  def test_item_with_no_enclosure
+    rss_source = <<-END_OF_STRING
+    <?xml version="1.0" encoding="utf-8"?>
+    <rss>
+        <channel>
+            <title>The Ricky Gervais Show</title>
+            <item>
+                <title>The Podfather Part I - Halloween</title>
+            </item>
+        </channel>
+    </rss>
+    END_OF_STRING
+
+    # Code here to test that a run doesn't throw an exception if there is no enclosure.
+    # (Remove enclosure from the above test XML)
+    #
+    rss = @rp.parse_rss(rss_source)
+    assert_nothing_raised { @rp.download_all(rss.items) }
+  end
+
   def test_dest_file_name(url)
     correct_dest_file_name = @rp.date_dir + "/" + "podcast.mp3"
     dest_file_name = @rp.dest_file_name("http://www.podcast.com/podcast.mp3")

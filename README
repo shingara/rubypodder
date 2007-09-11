@@ -1,7 +1,7 @@
 = rubypodder - A podcast aggregator without an interface
 
 This package contains rubypodder, a simple podcast receiver
-inspired by bashpodder (http://linc.homeunix.org:8080/scripts/bashpodder/).
+inspired by bashpodder (http://en.wikipedia.org/wiki/BashPodder).
 
 == Homepage
 
