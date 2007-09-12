@@ -108,3 +108,7 @@ I, [2007-04-18T17:22:37.595564 #5145]  INFO -- :   Downloading: http://www.ibm.c
   the latest programme. e.g. Provide a -n option which just shows what
   _would_ be downloaded, allowing the user to add some of the older programmes
   to the rp.done file, then do the actual download.
+
+- "No media to download for this item"
+  - This should name the item title, if it exists.
+  - Should downgrade to INFO. It will appear each time as it can't be registered in rp.done
