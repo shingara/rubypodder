@@ -114,7 +114,7 @@ class RubyPodder
     @log.info("Starting (#{Version})")
     read_feeds.each do |url|
       begin
-        http_body = rio(url).contents
+        http_body = open(url, 'User-Agent' => 'Ruby-Wget').read
       rescue
         @log.error("  Can't read from #{url}")
         next
