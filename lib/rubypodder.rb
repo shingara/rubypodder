@@ -77,17 +77,20 @@ class RubyPodder
     return dest
   end
 
-  def record_download(url)
+  def record_download(url, guid)
     rio(@done_file) << "#{url}\n"
+    rio(@done_file) << "#{guid}\n"
   end
 
-  def already_downloaded(url)
-    stripped_url = url.strip.downcase
-    File.open(@done_file).detect { |line| line.strip.downcase == stripped_url }
+  def already_downloaded(url, guid)
+    previously_downloaded = [url.strip.downcase, guid.strip.downcase]
+    File.open(@done_file).detect do |line|
+      previously_downloaded.include?(line.strip.downcase)
+    end
   end
 
-  def download(url)
-    return if already_downloaded(url)
+  def download(url, guid)
+    return if already_downloaded(url, guid)
     @log.info("  Downloading: #{url}")
     begin
       file_name = dest_file_name(url)
@@ -95,14 +98,18 @@ class RubyPodder
     rescue
       @log.error("  Failed to download #{url}")
     else
-      record_download(url)
+      record_download(url, guid)
     end
   end
 
   def download_all(items)
     items.each do |item|
       begin
-        download(item.enclosure.url)
+        guid = nil
+        if item.respond_to?(:guid) && item.guid.respond_to?(:content)
+          guid = item.guid.content
+        end
+        download(item.enclosure.url, guid)
       rescue
         @log.warn("  No media to download for this item")
       end
