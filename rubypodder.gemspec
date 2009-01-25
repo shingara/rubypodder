@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.add_dependency("rio")
   s.add_dependency("rake")
   s.add_dependency("mocha")
-  s.test_files = Dir['tests/*.rb']
+  s.test_files = ["tests/tc_rubypodder.rb", "tests/tc_stdout.rb", "tests/ts_rubypodder.rb"]
   s.has_rdoc = true
   s.extra_rdoc_files = ["README", "MIT-LICENSE"]
 end
