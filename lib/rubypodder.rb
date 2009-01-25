@@ -97,6 +97,7 @@ class RubyPodder
       rio(file_name) < rio(url)
     rescue
       @log.error("  Failed to download #{url}")
+      File.delete(file_name) if File.exists?(file_name)
     else
       record_download(url, guid)
     end
