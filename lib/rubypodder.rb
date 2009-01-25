@@ -82,8 +82,8 @@ class RubyPodder
   end
 
   def already_downloaded(url)
-    url_regexp = Regexp.new(url)
-    File.open(@done_file).grep(url_regexp).length > 0
+    stripped_url = url.strip.downcase
+    File.open(@done_file).detect { |line| line.strip.downcase == stripped_url }
   end
 
   def download(url)
