@@ -50,7 +50,7 @@ class RubyPodder
   end
 
   def create_date_dir
-    date_dir = @rp_dir + "/" + date_string(Time.now)
+    date_dir = File.join(@rp_dir, date_string(Time.now))
     File.makedirs date_dir
     date_dir
   end
@@ -65,7 +65,7 @@ class RubyPodder
   end
 
   def dest_file_name(url)
-    @date_dir + "/" + File.basename(URI.parse(url).path)
+    File.join(@dest_dir, File.basename(URI.parse(url).path))
   end
 
   def record_download(url)
