@@ -65,7 +65,16 @@ class RubyPodder
   end
 
   def dest_file_name(url)
-    File.join(@dest_dir, File.basename(URI.parse(url).path))
+    dest = File.join(@date_dir, File.basename(URI.parse(url).path))
+    dest = dest.gsub(/\s+/,'_').gsub('%20','_')
+    while File.exists? dest
+      ext = File.extname(dest)
+      name = File.basename(dest, ext)
+      name += "_00" unless name =~ /_\d+$/
+      name.succ!
+      dest = File.join(File.dirname(dest), name + ext)
+    end
+    return dest
   end
 
   def record_download(url)
