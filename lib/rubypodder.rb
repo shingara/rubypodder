@@ -57,7 +57,7 @@ class RubyPodder
 
   def read_feeds
     #IO.readlines(@conf_file).each {|l| l.chomp!}
-    a = rio(@conf_file).chomp.readlines.reject {|i| i =~ /^#/}
+    rio(@conf_file).chomp.readlines.reject {|i| i =~ /^#/}
   end
 
   def parse_rss(rss_source)
@@ -78,15 +78,24 @@ class RubyPodder
   end
 
   def record_download(url, guid)
+    if guid
+      rio(@done_file) << "#{guid}\n"
+    end
     rio(@done_file) << "#{url}\n"
-    rio(@done_file) << "#{guid}\n"
   end
 
   def already_downloaded(url, guid)
-    previously_downloaded = [url.strip.downcase, guid.strip.downcase]
-    File.open(@done_file).detect do |line|
-      previously_downloaded.include?(line.strip.downcase)
+    if guid
+      previously_downloaded = [url.strip.downcase, guid.strip.downcase]
+      File.open(@done_file).detect do |line|
+        previously_downloaded.include?(line.strip.downcase)
+      end
+    else
+      File.open(@done_file).detect do |line|
+        url.strip.downcase == line.strip.downcase
+      end
     end
+
   end
 
   def download(url, guid)
